@@ -14,16 +14,15 @@ class RateLimiterServiceProvider extends ServiceProvider
 
     }
 
-
     public function boot()
     {
 
         RateLimiter::for('importAnimeData', function () {
-            return Limit::perMinute(60);
+            return Limit::perMinute(1);
         });
 
         RateLimiter::for('getAnimeBySlug', function () {
-            return Limit::perSecond(3);
+            return Limit::perSecond(1);
         });
     }
 }
